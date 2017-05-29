@@ -3,6 +3,10 @@ webservice:
     type:     annotation
     prefix:   /
 
+categoria:
+    type: rest
+    resource: WebserviceBundle\Controller\CategoriaController
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

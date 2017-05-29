@@ -71,9 +71,9 @@ swiftmailer:
     spool: { type: memory }
 
 
-#sensio_framework_extra:
-#    view: { annotations : false }
-#    router: { annotations : true }
+sensio_framework_extra:
+    view: { annotations : true }
+    router: { annotations : true }
 
 
 fos_rest:
@@ -81,4 +81,4 @@ fos_rest:
         rules:
             - prefer_extension: false
     view:
-        view_response_listener: 'force'
+        view_response_listener: true
