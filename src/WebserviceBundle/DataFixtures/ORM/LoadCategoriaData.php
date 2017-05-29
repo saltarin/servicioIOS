@@ -6,23 +6,29 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use WebserviceBundle\Entity\Categoria;
 
-class LoadCategoriaData extends FixtureInterface{
+class LoadCategoriaData implements FixtureInterface{
 
 
     public function load(ObjectManager $manager){
 
         $computo = new Categoria();
         $computo->setDescripcion("Computo");
-        $computo->setEstado("habilitado");
-        $computo->setFechaCreacion(date("Y-m-d h:i:sa"));
+        $computo->setEstado(1);
+        $computo->setFechaCreacion(new \DateTime());
 
         $vestidos = new Categoria();
         $vestidos->setDescripcion("vestidos");
-        $vestidos->setEstado("habilitado");
-        $vestidos->setFechaCreacion(date("Y-m-d h:i:sa"));
+        $vestidos->setEstado(1);
+        $vestidos->setFechaCreacion(new \DateTime());
+
+        $restaurantes = new Categoria();
+        $restaurantes->setDescripcion("restaurantes");
+        $restaurantes->setEstado(1);
+        $restaurantes->setFechaCreacion(new \DateTime());
 
         $manager->persist($computo);
         $manager->persist($vestidos);
+        $manager->persist($restaurantes);
 
         $manager->flush();
     }
