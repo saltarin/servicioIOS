@@ -5,17 +5,18 @@ namespace WebserviceBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-use FOS\RestBundle\Controller\Annotations\View;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use \FOS\RestBundle\Controller\FOSRestController;
 use WebserviceBundle\Entity\Categoria;
+
 
 class CategoriaController extends FOSRestController
 {
 
     /**
      * @return array
-     * @View()
+     * @Rest\View()
      */
     public function getCategoriasAction(){
         
@@ -27,13 +28,17 @@ class CategoriaController extends FOSRestController
 
 
     /**
+     * 
      * @param Categoria $categoria
      * @return array
-     * @View()
+     * @Rest\View()
      * @ParamConverter("categoria", class="WebserviceBundle:Categoria")
      */
     public function getCategoriaAction(Categoria $categoria){
 
+        if($categoria === null){
+            return array('error' => "Categoria not exists");
+        }
         return array('categoria' => $categoria);
     }
 }
