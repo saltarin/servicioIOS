@@ -7,9 +7,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use \FOS\RestBundle\Controller\FOSRestController;
 use WebserviceBundle\Entity\Categoria;
 
-class CategoriaController extends Controller
+class CategoriaController extends FOSRestController
 {
 
     /**
@@ -19,7 +20,7 @@ class CategoriaController extends Controller
     public function getCategoriasAction(){
         
         $categorias = $this->getDoctrine()
-            ->getRepository('AppRestWebserviceBundle:Categoria')
+            ->getRepository('WebserviceBundle:Categoria')
             ->findAll();
         return array('categorias' => $categorias);
     }
