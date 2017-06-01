@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categoria
 {
+    public function __construct(){
+
+        $this->ofertas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * @var int
      *
@@ -41,6 +46,12 @@ class Categoria
      * @ORM\Column(name="fechaCreacion", type="datetime")
      */
     private $fechaCreacion;
+
+    /**
+     * @var \array Oferta
+     * @ORM\OneToMany(targetEntity = "Oferta", mappedBy = "product")
+     */
+    private $ofertas;
 
 
     /**
@@ -124,5 +135,28 @@ class Categoria
     {
         return $this->fechaCreacion;
     }
+
+    
+    /**
+     * @return \array Oferta
+     */
+    public function getOfertas(){
+
+        return $this->ofertas;
+    }
+
+
+    /**
+     * @var \array Oferta
+     * @return Categoria
+     */
+    public function setOfertas($ofertas){
+
+        $this->ofertas = $ofertas;
+        return $this;
+    }
+
+    
+
 }
 
