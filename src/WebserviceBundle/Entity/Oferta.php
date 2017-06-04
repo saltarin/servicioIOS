@@ -15,6 +15,8 @@ class Oferta
     public function __construct(){
 
         $this->tags = new Doctrine\Common\Collections\ArrayCollection();
+        $this->capturas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->puntuacionOfertas = new \Doctrine\Common\Collections\ArrayCollection();
     }
     /**
      * @var int
@@ -97,10 +99,30 @@ class Oferta
     private $categoria;
 
     /**
+     * @var \array PuntuacionOferta
+     * @ORM\OneToMany(targetEntity = "PuntuacionOferta",mappedBy = "oferta")
+     */
+    private $puntuacionOfertas;
+
+    /**
+     * @var \array Captura
+     * 
+     * @ORM\OneToMany(targetEntity = "Captura", mappedBy = "oferta")
+     */
+    private $capturas;
+
+    /**
      * @var \array Tag
      * @ORM\ManyToMany(targetEntity="Tag",mappedBy="ofertas")
      */
     private $tags;
+
+    /**
+     * @var \array Usuario
+     * @ORM\ManyToOne(targetEntity= "Usuario", inversedBy = "ofertas")
+     * @ORM\JoinColumn(name= "usuario_id", referencedColumnName= "id")
+     */
+    private $usuario;
 
 
     /**
@@ -362,12 +384,67 @@ class Oferta
     }
 
     /**
-     * @var \array Tag
+     * @param \array Tag
      * @return Oferta
      */
     public function setTags($tags){
 
         $this->tags = $tags;
+        return $this;
+    }
+
+
+    /**
+     * @return \array Captura
+     */
+    public function getCapturas(){
+
+        return $this->capturas;
+    }
+
+    /**
+     * @param \array Captura
+     * @return Oferta
+     */
+    public function setCapturas($capturas){
+
+        $this->capturas = $capturas;
+        return $this;
+    }
+
+    /**
+     * @return \array Usuario
+     */
+    public function getUsuario(){
+
+        return $this->usuario;
+    }
+
+    /**
+     * @param Usuario $usuario
+     * @return Oferta
+     */
+    public function setUsuario($usuario){
+
+        $this->usuario = $usuario;
+        return $this;
+    }
+
+    /**
+     * @return \array PuntuacionOferta
+     */
+    public function getPuntuacionOfertas(){
+
+        return $this->puntuacionOfertas;
+    }
+
+    /**
+     * @param \array PuntuacionOferta
+     * @return Oferta
+     */
+    public function setPuntuacionOfertas($puntuacionOfertas){
+
+        $this->puntuacionOfertas = $puntuacionOfertas;
         return $this;
     }
 }

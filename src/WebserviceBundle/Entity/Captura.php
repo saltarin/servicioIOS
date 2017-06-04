@@ -30,7 +30,7 @@ class Captura
 
     /**
      * @var Oferta
-     * @ORM\ManyToOne(targetEntity="Oferta", inversedBy="ofertas")
+     * @ORM\ManyToOne(targetEntity="Oferta", inversedBy="capturas")
      * @ORM\JoinColumn(name="oferta_id", referencedColumnName="id")
      */
     private $oferta;
