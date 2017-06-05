@@ -15,7 +15,6 @@ class PuntuacionOferta
     /**
      * @var Oferta
      *
-     * @ORM\Column(name="oferta_id", type="integer")
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Oferta", inversedBy ="puntuacionOfertas")
      * @ORM\JoinColumn(name="oferta_id",referencedColumnName="id")
@@ -25,7 +24,6 @@ class PuntuacionOferta
     /**
      * @var Usuario
      *
-     * @ORM\Column(name="usuario_id", type="integer")
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Usuario", inversedBy ="puntuacionOfertas")
      * @ORM\JoinColumn(name="usuario_id",referencedColumnName="id")
@@ -71,7 +69,7 @@ class PuntuacionOferta
      * @param Usuario $usuario
      * @return PuntuacionOferta
      */
-    public function setUsuario($usuario){
+    public function setUsuario(Usuario $usuario){
 
         $this->usuario = $usuario;
         return $this;

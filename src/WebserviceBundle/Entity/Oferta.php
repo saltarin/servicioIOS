@@ -3,6 +3,7 @@
 namespace WebserviceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Oferta
@@ -14,9 +15,9 @@ class Oferta
 {
     public function __construct(){
 
-        $this->tags = new Doctrine\Common\Collections\ArrayCollection();
-        $this->capturas = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->puntuacionOfertas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags = new ArrayCollection();
+        $this->capturas = new ArrayCollection();
+        $this->puntuacionOfertas = new ArrayCollection();
     }
     /**
      * @var int
@@ -44,7 +45,7 @@ class Oferta
     /**
      * @var string
      *
-     * @ORM\Column(name="precio", type="decimal", precision=2, scale=2)
+     * @ORM\Column(name="precio", type="decimal", precision=6, scale=2)
      */
     private $precio;
 
