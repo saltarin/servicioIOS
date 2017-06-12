@@ -3,6 +3,8 @@
 namespace WebserviceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use WebserviceBundle\Entity\Usuario;
+use WebserviceBundle\Entity\Oferta;
 
 /**
  * Comentario
@@ -24,6 +26,21 @@ class Comentario
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var Usuario
+     * @ORM\ManyToOne(targetEntity = "Usuario", inversedBy = "comentarios")
+     * @ORM\JoinColumn(name = "usuario_id",referencedColumnName = "id")
+     */
+    private $usuario;
+
+    /**
+     * @var Oferta
+     * @ORM\ManyToOne(targetEntity = "oferta", inversedBy = "comentarios")
+     * @ORM\JoinColumn(name = "oferta_id",referencedColumnName = "id")
+     */
+    private $oferta;
+
 
     /**
      * @var Comentario
@@ -160,6 +177,40 @@ class Comentario
         return $this;
     }
 
+    /**
+     * @return Usuario
+     */
+    public function getUsuario(){
 
+        return $this->usuario;
+    }
+
+    /** 
+     * @param Usuario $usuario
+     * @return Comentario
+    */
+    public function setUsuario($usuario){
+
+        $this->usuario = $usuario;
+        return $this;
+    }
+
+    /**
+     * @return Oferta
+     */
+    public function getOferta(){
+
+        return $this->oferta;
+    }
+
+    /** 
+     * @param Oferta $oferta
+     * @return Comentario
+    */
+    public function setOferta($oferta){
+
+        $this->oferta = $oferta;
+        return $this;
+    }
 }
 

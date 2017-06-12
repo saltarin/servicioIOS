@@ -18,6 +18,7 @@ class Oferta
         $this->tags = new ArrayCollection();
         $this->capturas = new ArrayCollection();
         $this->puntuacionOfertas = new ArrayCollection();
+        $this->comentarios = new ArrayCollection();
     }
     /**
      * @var int
@@ -125,6 +126,12 @@ class Oferta
      * @ORM\JoinColumn(name= "usuario_id", referencedColumnName= "id")
      */
     private $usuario;
+
+    /**
+     * @var \array Comentario
+     * @ORM\OneToMany(targetEntity = "Comentario", mappedBy = "oferta")
+     */
+    private $comentarios;
 
 
     /**
@@ -447,6 +454,24 @@ class Oferta
     public function setPuntuacionOfertas($puntuacionOfertas){
 
         $this->puntuacionOfertas = $puntuacionOfertas;
+        return $this;
+    }
+
+    /**
+     * @return \array Comentario
+     */
+    public function getComentarios(){
+
+        return $this->comentarios;
+    }
+
+    /**
+     * @param \array Comentario
+     * @return Oferta
+     */
+    public function setComentarios($comentarios){
+
+        $this->comentarios = $comentarios;
         return $this;
     }
 }

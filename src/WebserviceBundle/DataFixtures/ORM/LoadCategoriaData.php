@@ -66,6 +66,20 @@ class LoadCategoriaData implements FixtureInterface{
         $puntuacion1->setUsuario($usuario);
         $puntuacion1->setPuntuacion(1);
 
+        $comentario_001 = new Comentario();
+        $comentario_001->setMensaje("mas 10 papu");
+        $comentario_001->setEstado(1);
+        $comentario_001->setFechaRegistro(new \Datetime());
+        $comentario_001->setUsuario($usuario);
+        $comentario_001->setOferta($oferta1);
+
+        $comentario_001_001 = new Comentario();
+        $comentario_001_001->setMensaje("reportado despidete de tu cuenta");
+        $comentario_001_001->setEstado(1);
+        $comentario_001_001->setFechaRegistro(new \Datetime());
+        $comentario_001_001->setUsuario($usuario);
+        $comentario_001_001->setOferta($oferta1);
+        $comentario_001_001->setReferencia($comentario_001);
 
         
         $manager->persist($tag1);
@@ -75,6 +89,8 @@ class LoadCategoriaData implements FixtureInterface{
         $manager->persist($restaurantes);
         $manager->persist($usuario);
         $manager->persist($oferta1);
+        $manager->persist($comentario_001);
+        $manager->persist($comentario_001_001);
         $manager->persist($puntuacion1);
 
         $manager->flush();

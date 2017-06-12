@@ -16,6 +16,7 @@ class Usuario
         
         $this->ofertas = new \Doctrine\Common\Collections\ArrayCollection();
         $this->puntuacionOfertas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comentarios = new \Doctrine\Common\Collections\ArrayCollection();
 
     }
     /**
@@ -101,6 +102,12 @@ class Usuario
      * @ORM\OneToMany(targetEntity = "PuntuacionOferta",mappedBy = "usuario")
      */
     private $puntuacionOfertas;
+
+    /**
+     * @var \array Comentario
+     * @ORM\OneToMany(targetEntity = "Comentario",mappedBy = "usuario")
+     */
+    private $comentarios;
 
 
     /**
@@ -363,6 +370,24 @@ class Usuario
     public function getPuntuacionOfertas(){
         
         return $this->puntuacionOfertas;
+    }
+
+    /**
+     * @param \array Comentario
+     * @return Usuario
+     */
+    public function setComentarios($comentarios){
+
+        $this->comentarios = $comentarios;
+        return $this;
+    }
+
+    /**
+     * @return \array Comentario
+     */
+    public function getComentarios(){
+        
+        return $this;
     }
 
 }

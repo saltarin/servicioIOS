@@ -39,6 +39,8 @@ class CategoriaController extends FOSRestController
         if($categoria === null){
             return array('error' => "Categoria not exists");
         }
-        return array('categoria' => $categoria);
+        $categorias = $this->getDoctrine->getRepository("WebserviceBundle:Categoria")
+                        ->find($categoria);
+        return array('categoria' => $categorias);
     }
 }
