@@ -49,7 +49,7 @@ class Categoria
 
     /**
      * @var \array Oferta
-     * @ORM\OneToMany(targetEntity = "Oferta", mappedBy = "product")
+     * @ORM\OneToMany(targetEntity = "Oferta", mappedBy = "categoria")
      */
     private $ofertas;
 
