@@ -28,7 +28,7 @@ class Comentario
     /**
      * @var Comentario
      * @ORM\ManyToOne(targetEntity = "Comentario", inversedBy = "comentarios")
-     * @ORM\JoinColumn(name = referencia_id, referencedColumnName = "id")
+     * @ORM\JoinColumn(name = "referencia_id", referencedColumnName = "id")
      */
     private $referencia;
 
@@ -140,6 +140,24 @@ class Comentario
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    /**
+     * @return Comentario
+     */
+    public function getReferencia(){
+
+        return $this->referencia;
+    }
+
+    /**
+     * @param Comentario $referencia
+     * @return Comentario
+     */
+    public function setReferencia(Comentario $referencia){
+
+        $this->referencia = $referencia;
+        return $this;
     }
 
 
