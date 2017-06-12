@@ -6,10 +6,12 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use WebserviceBundle\Entity\Tag;
 use WebserviceBundle\Entity\Oferta;
 use WebserviceBundle\Entity\Categoria;
 use WebserviceBundle\Entity\Usuario;
 use WebserviceBundle\Entity\PuntuacionOferta;
+use WebserviceBundle\Entity\Comentario;
 
 class LoadCategoriaData implements FixtureInterface{
 
@@ -39,6 +41,12 @@ class LoadCategoriaData implements FixtureInterface{
         $usuario->setFechaRegistro(new \DateTime());
         $usuario->setFechaNacimiento(new \DateTime("2017-08-22"));
         $usuario->setEstado("HABILITADO");
+
+        $tag1 = new Tag();
+        $tag1->setDescripcion("Oferta");
+
+        $tag2 = new Tag();
+        $tag2->setDescripcion("Facebook");
         
         $oferta1 = new Oferta();
         $oferta1->setTitulo("Oferta 1");
@@ -50,12 +58,18 @@ class LoadCategoriaData implements FixtureInterface{
         $oferta1->setCategoria($restaurantes);
         $oferta1->setUsuario($usuario);
 
+        $oferta1->getTags()->add($tag1);
+        $oferta1->getTags()->add($tag2);
+
         $puntuacion1 = new PuntuacionOferta();
         $puntuacion1->setOferta($oferta1);
         $puntuacion1->setUsuario($usuario);
         $puntuacion1->setPuntuacion(1);
+
+
         
-        
+        $manager->persist($tag1);
+        $manager->persist($tag2);
         $manager->persist($computo);
         $manager->persist($vestidos);
         $manager->persist($restaurantes);

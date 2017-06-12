@@ -114,7 +114,8 @@ class Oferta
 
     /**
      * @var \array Tag
-     * @ORM\ManyToMany(targetEntity="Tag",mappedBy="ofertas")
+     * @ORM\ManyToMany(targetEntity="Tag",inversedBy="ofertas")
+     * @ORM\JoinTable(name="ofertas_tags")
      */
     private $tags;
 

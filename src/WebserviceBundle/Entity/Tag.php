@@ -3,6 +3,7 @@
 namespace WebserviceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Tag
@@ -14,7 +15,7 @@ class Tag
 {
     public function __construct(){
 
-        $this->ofertas = new Doctrine\Common\Collections\ArrayCollection();
+        $this->ofertas = new ArrayCollection();
     }
     /**
      * @var int
@@ -34,8 +35,7 @@ class Tag
 
     /**
      * @var Oferta
-     * @ORM\ManyToMany(targetEntity="Oferta", inversedBy="tags")
-     * @ORM\JoinTable(name="tags_ofertas")
+     * @ORM\ManyToMany(targetEntity="Oferta", mappedBy="tags")
      */
     private $ofertas;
 
