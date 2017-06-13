@@ -88,6 +88,7 @@ class CategoriaController extends FOSRestController
         if($categoria === null){
             return array('error' => 'categoria not exist', 'code' => Response::HTTP_NOT_ACCEPTABLE);    
         }
+        
         $categoria->setDescripcion($request->get('Ndescripcion'));
         $categoria->setEstado($request->get('Nestado'));
         $categoria->setFechaCreacion($request->get('NfechaCreacion'));
