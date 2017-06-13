@@ -9,6 +9,8 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use \FOS\RestBundle\Controller\FOSRestController;
 use WebserviceBundle\Entity\Categoria;
+use \Symfony\Component\HttpFoundation\Request;
+use \Symfony\Component\HttpFoundation\Response;
 
 
 class CategoriaController extends FOSRestController
@@ -23,6 +25,10 @@ class CategoriaController extends FOSRestController
         $categorias = $this->getDoctrine()
             ->getRepository('WebserviceBundle:Categoria')
             ->findAll();
+        if($categorias === null){
+            return new View("Sin resultados", Response::HTTP_NOT_FOUND);
+        }
+        
         return array('categorias' => $categorias);
     }
 
@@ -30,17 +36,69 @@ class CategoriaController extends FOSRestController
     /**
      * 
      * @param Categoria $categoria
-     * @return array
+     * @return \array
      * @Rest\View()
-     * @ParamConverter("categoria", class="WebserviceBundle:Categoria")
+     * @ParamConverter(name="categoria", class="WebserviceBundle:Categoria")
      */
     public function getCategoriaAction(Categoria $categoria){
 
         if($categoria === null){
-            return array('error' => "Categoria not exists");
+            return array('error' => "Categoria not exists", 'code' => Response::HTTP_NOT_FOUND);
         }
-        $categorias = $this->getDoctrine->getRepository("WebserviceBundle:Categoria")
-                        ->find($categoria);
-        return array('categoria' => $categorias);
+        
+        return array('categoria' => $categoria);
     }
+
+    /**
+     * @param Request $request
+     * @return \array
+     * @Rest\Post()
+     */
+    public function postCategoriaAction(Request $request){
+
+        $old_categoria = $this->getDoctrine()
+            ->getRepository('WebserviceBundle:Categoria')
+            ->findBy(array('descripcion' => $request->get('descripcion')));
+        
+        if($old_categoria !== null){
+            return array('error' => 'categoria exist', 'code' => Response::HTTP_NOT_ACCEPTABLE);    
+        }
+
+        $categoria = new Categoria();
+        $categoria->setDescripcion($request->get('descripcion'));
+        $categoria->setEstado(1);
+        $categoria->setFechaCreacion(new \DateTime());
+
+        $this->getDoctrine()->getManager()->persist($categoria);
+        $this->getDoctrine()->getManager()->flush();
+
+        return array('categoria' => $categoria, 'code' => Response::HTTP_OK);
+    }
+
+    /**
+     * @param Categoria $categoria
+     * @return \array
+     * @Rest\Put()
+     * @ParamConverter(name="categoria", class="WebserviceBundle:Categoria")
+     */
+    public function putCategoriaAction(Categoria $categoria){
+
+        $old_categoria = $this->getDoctrine()
+            ->getRepository('WebserviceBundle:Categoria')
+            ->findBy(array('id' => $request->get('id')));
+        
+        if($old_categoria === null){
+            return array('error' => 'categoria not exist', 'code' => Response::HTTP_NOT_ACCEPTABLE);    
+        }
+
+        $old_categoria->setDescripcion($categoria->getDescripcion());
+        $old_categoria->setEstado($categoria->getEstado());
+        $old_categoria->setFechaCreacion($categoria->getFechaCreacion());
+
+        $this->getDoctrine()->getManager()->flush();
+
+        return array('categoria' => $categoria, 'code' => Response::HTTP_OK);
+    }
+
+    
 }
