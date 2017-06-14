@@ -76,25 +76,28 @@ class CategoriaController extends FOSRestController
     }
 
     /**
-     * @param Categoria $categoria
-     * @param Request $request
+     * @param int $id
      * @return \array
      * @Rest\Put()
-     * @ParamConverter(name="categoria", class="WebserviceBundle:Categoria")
      */
-    public function putCategoriaAction(Categoria $categoria,Request $request){
+    public function putCategoriaAction($id, Request $request){
 
-        
-        if($categoria === null){
+        $old_categoria = $this->getDoctrine()
+            ->getRepository('WebserviceBundle:Categoria')
+            ->find($id);
+
+        if($old_categoria === null){
             return array('error' => 'categoria not exist', 'code' => Response::HTTP_NOT_ACCEPTABLE);    
         }
-        
-        $categoria->setDescripcion($request->get('Ndescripcion'));
-        $categoria->setEstado($request->get('Nestado'));
-        $categoria->setFechaCreacion($request->get('NfechaCreacion'));
+
+        $old_categoria->setDescripcion($request->get('descripcion'));
+        $old_categoria->setEstado($request->get('estado'));
+        $old_categoria->setFechaCreacion(new \Datetime($request->get('fechaCreacion')));
+
         $this->getDoctrine()->getManager()->flush();
 
-        return array('categoria' => $categoria, 'code' => Response::HTTP_OK);
+        return array('categoria' => $old_categoria, 
+                     'code' => Response::HTTP_OK);
     }
 
     
