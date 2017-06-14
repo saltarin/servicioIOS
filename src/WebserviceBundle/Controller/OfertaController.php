@@ -9,6 +9,6 @@ use \FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-class UsuarioController extends FOSRestController
+class OfertaController extends FOSRestController
 {
 }
