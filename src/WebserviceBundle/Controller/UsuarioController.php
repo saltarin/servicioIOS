@@ -120,5 +120,27 @@ class UsuarioController extends FOSRestController
         
         return array('usuario' => $old_usuario,'code' => Response::HTTP_OK);
     }
+
+    /**
+     * @param Request $request
+     * @return \array
+     * @Rest\Post()
+     */
+    public function findUsuarioAction(Request $request){
+
+        $email = $request->get('email');
+        $password = $request->get('password');
+
+        $usuario = $this->getDoctrine()
+                    ->getRepository("WebserviceBundle:Usuario")
+                    ->findBy(array('email' => $email,'password' => $password));
+
+        if($usuario == null){
+
+            return array('response' => 'email or password not correct', 'code' => Response::HTTP_UNAUTHORIZED);
+        }
+
+        return array('usuario'=> $usuario ,'code' => Response::HTTP_OK);
+    }
     
 }
