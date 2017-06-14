@@ -60,7 +60,7 @@ class CategoriaController extends FOSRestController
             ->getRepository('WebserviceBundle:Categoria')
             ->findBy(array('descripcion' => $request->get('descripcion')));
         
-        if($old_categoria !== null){
+        if($old_categoria != null){
             return array('error' => 'categoria exist', 'code' => Response::HTTP_NOT_ACCEPTABLE);    
         }
 

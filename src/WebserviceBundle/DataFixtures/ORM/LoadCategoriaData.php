@@ -39,7 +39,7 @@ class LoadCategoriaData implements FixtureInterface{
         $usuario->setNombre("kappa");
         $usuario->setApellidos("ross");
         $usuario->setFechaRegistro(new \DateTime());
-        $usuario->setFechaNacimiento(new \DateTime("2017-08-22"));
+        $usuario->setFechaNacimiento(new \DateTime("2000-08-22"));
         $usuario->setEstado("HABILITADO");
 
         $tag1 = new Tag();
