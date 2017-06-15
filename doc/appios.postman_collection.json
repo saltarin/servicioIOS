@@ -1,0 +1,558 @@
+{
+	"variables": [],
+	"info": {
+		"name": "appios",
+		"_postman_id": "b7807e15-08cc-0df7-21cb-824e4c36f09b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "categoria",
+			"description": "",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"url": "http://127.0.0.1:8000/categorias",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "descripcion",
+									"value": "kappa",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "edit/{id}",
+					"request": {
+						"url": "http://127.0.0.1:8000/categorias/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "//descripcion",
+								"value": "neversss",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "hahaha",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "estado",
+									"value": "1",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "fechaCreacion",
+									"value": "1988-01-01 00:00:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "email",
+									"value": "neverducky@ross.com",
+									"type": "text",
+									"enabled": false
+								},
+								{
+									"key": "password",
+									"value": "jojo99",
+									"type": "text",
+									"enabled": false
+								},
+								{
+									"key": "nombre",
+									"value": "jojo",
+									"type": "text",
+									"enabled": false
+								},
+								{
+									"key": "apellidos",
+									"value": "jojo",
+									"type": "text",
+									"enabled": false
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "2004-08-08",
+									"type": "text",
+									"enabled": false
+								},
+								{
+									"key": "sexo",
+									"value": "apache",
+									"type": "text",
+									"enabled": false
+								},
+								{
+									"key": "estado",
+									"value": "INHABILITADO",
+									"type": "text",
+									"enabled": false
+								},
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text",
+									"enabled": false
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "find/{id}",
+					"request": {
+						"url": "http://127.0.0.1:8000/categorias/1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "descripcion",
+									"value": "kappa",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"url": "http://127.0.0.1:8000/categorias",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "never lucky",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "oferta",
+			"description": "",
+			"item": [
+				{
+					"name": "http://127.0.0.1:8000/ofertas/{id}",
+					"request": {
+						"url": "http://127.0.0.1:8000/ofertas/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/ofertas",
+					"request": {
+						"url": "http://127.0.0.1:8000/ofertas",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/ofertas",
+					"request": {
+						"url": "http://127.0.0.1:8000/ofertas",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "titulo",
+									"value": "mi titulo",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "descripcion",
+									"value": "bla bla bla bla",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "precio",
+									"value": "99.99",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "tipoOferta",
+									"value": "Diario",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "categoria",
+									"value": "1",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "usuario",
+									"value": "1",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text",
+									"enabled": false
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/ofertas/{id}",
+					"request": {
+						"url": "http://127.0.0.1:8000/ofertas/2",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "titulo",
+									"value": "mi titulo",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "descripcion",
+									"value": "bla bla bla bla",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "precio",
+									"value": "99.99",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "tipoOferta",
+									"value": "Diario",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "categoria",
+									"value": "1",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "usuario",
+									"value": "1",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "fechaRegistro",
+									"value": "2017-01-01",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usuario",
+			"description": "",
+			"item": [
+				{
+					"name": "http://127.0.0.1:8000/usuarios",
+					"request": {
+						"url": "http://127.0.0.1:8000/usuarios",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "never lucky",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/usuarios/{id}",
+					"request": {
+						"url": "http://127.0.0.1:8000/usuarios/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "never lucky",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/usuarios",
+					"request": {
+						"url": "http://127.0.0.1:8000/usuarios",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "never lucky",
+									"type": "text",
+									"enabled": false
+								},
+								{
+									"key": "email",
+									"value": "kappa_pride@ross.com",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "password",
+									"value": "kappa_pride",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "kappa",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "apellidos",
+									"value": "pride",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "2000-01-01",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "sexo",
+									"value": "apache",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/usuarios/{id}",
+					"request": {
+						"url": "http://127.0.0.1:8000/usuarios/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "never lucky",
+									"type": "text",
+									"enabled": false
+								},
+								{
+									"key": "email",
+									"value": "alpha@ross.com",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "password",
+									"value": "kappa_pride",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "kappa",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "apellidos",
+									"value": "pride",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "2000-01-01",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "sexo",
+									"value": "apache",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "estado",
+									"value": "HABILITADO",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/usuarios/find",
+					"request": {
+						"url": "http://127.0.0.1:8000/usuarios/find",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "neverducky@ross.com",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "password",
+									"value": "jojo999",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
