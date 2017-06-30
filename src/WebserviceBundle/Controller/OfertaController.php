@@ -56,16 +56,8 @@ class OfertaController extends FOSRestController
      */
     public function postOfertaAction(Request $request){
 
-        /*
-        $old_oferta = $this->getDoctrine()
-                        ->getRepository('WebserviceBundle:Oferta')
-                        ->find($request->get('id'));
-        
-        if($old_oferta != null){
-
-            return array('response' => 'Oferta exists','code' => Response::HTTP_NOT_ACCEPTABLE);
-        }
-        */
+        // categoria, usuario int not null
+        // capturas           string separado por ,
 
         $oferta = new Oferta();
         $oferta->setTitulo($request->get('titulo'));
@@ -81,24 +73,17 @@ class OfertaController extends FOSRestController
                         ->getRepository('WebserviceBundle:Categoria')
                         ->find($request->get('categoria'));
         
-        //leer capturas for
-            #FALTA
-        //  \file $request->files->get('img')
+        //imagenes
+        $capturas = $request->get('capturas');
+        $arr_capturas = \explode(",",$capturas);
 
-        $captura1 = new Captura();
-        $captura1->setUrl('img/vapenation.jpg');
-        $oferta->getCapturas()->add($captura1);
-        $this->getDoctrine()->getEntityManager()->persist($captura1);
+        foreach($arr_capturas as $captura_id){
 
-        $captura2 = new Captura();
-        $captura2->setUrl('img/vapenation.jpg');
-        $oferta->getCapturas()->add($captura2);
-        $this->getDoctrine()->getEntityManager()->persist($captura2);
-
-        $captura3 = new Captura();
-        $captura3->setUrl('img/vapenation.jpg');
-        $oferta->getCapturas()->add($captura3);
-        $this->getDoctrine()->getEntityManager()->persist($captura3);
+            $captura = new Captura();
+            $captura->setUrl($captura_id);
+            $oferta->getCapturas()->add($captura);
+            $this->getDoctrine()->getEntityManager()->persist($captura);
+        }
 
         //id usuario
         $usuario = $this->getDoctrine()

@@ -69,11 +69,7 @@ class UsuarioController extends FOSRestController
         $usuario->setFechaNacimiento(new \DateTime($request->get('fechaNacimiento')));
         $usuario->setSexo($request->get('sexo'));
 
-        //subir imagen
-        #FALTA
-        //  \file $request->files->get('img')
-
-        $usuario->setAvatar('img/vapenation.jpg');
+        $usuario->setAvatar($request->get('avatar'));
 
         $usuario->setEstado("HABILITADO");
         $usuario->setFechaRegistro(new \Datetime());
@@ -110,8 +106,7 @@ class UsuarioController extends FOSRestController
         $old_usuario->setFechaNacimiento(new \DateTime($request->get('fechaNacimiento')));
         $old_usuario->setSexo($request->get('sexo'));
 
-        //falta reemplazar img
-        //$usuario->setAvatar($this->getRequest()->getUriFromPath('/img/vapenation.jpg'));
+        $usuario->setAvatar($request->get('avatar'));
 
         $old_usuario->setEstado($request->get('estado'));
         $old_usuario->setFechaRegistro(new \Datetime($request->get('fechaRegistro')));

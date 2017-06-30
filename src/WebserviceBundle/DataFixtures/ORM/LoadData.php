@@ -13,7 +13,7 @@ use WebserviceBundle\Entity\Usuario;
 use WebserviceBundle\Entity\PuntuacionOferta;
 use WebserviceBundle\Entity\Comentario;
 
-class LoadCategoriaData implements FixtureInterface{
+class LoadData implements FixtureInterface{
 
 
     public function load(ObjectManager $manager){
