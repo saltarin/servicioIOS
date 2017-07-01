@@ -23,16 +23,7 @@ puntuacion:
     type: rest
     resource: WebserviceBundle\Controller\PuntuacionController
 
-<<<<<<< HEAD
-puntuacion:
-    type: rest
-    resource: WebserviceBundle\Controller\PuntuacionController
-
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
-=======
 oferta:
     type: rest
     resource: WebserviceBundle\Controller\OfertaController
->>>>>>> kappa
+
