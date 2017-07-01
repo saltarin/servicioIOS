@@ -3,6 +3,10 @@ webservice:
     type:     annotation
     prefix:   /
 
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
 categoria:
     type: rest
     resource: WebserviceBundle\Controller\CategoriaController
@@ -15,10 +19,11 @@ comentario:
     type: rest
     resource: WebserviceBundle\Controller\ComentarioController
 
-oferta:
+puntuacion:
     type: rest
-    resource: WebserviceBundle\Controller\OfertaController
+    resource: WebserviceBundle\Controller\PuntuacionController
 
+<<<<<<< HEAD
 puntuacion:
     type: rest
     resource: WebserviceBundle\Controller\PuntuacionController
@@ -26,3 +31,8 @@ puntuacion:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+=======
+oferta:
+    type: rest
+    resource: WebserviceBundle\Controller\OfertaController
+>>>>>>> kappa
