@@ -3,6 +3,10 @@ webservice:
     type:     annotation
     prefix:   /
 
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
 categoria:
     type: rest
     resource: WebserviceBundle\Controller\CategoriaController
@@ -15,10 +19,10 @@ comentario:
     type: rest
     resource: WebserviceBundle\Controller\ComentarioController
 
+puntuacion:
+    type: rest
+    resource: WebserviceBundle\Controller\PuntuacionController
+
 oferta:
     type: rest
     resource: WebserviceBundle\Controller\OfertaController
-
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
