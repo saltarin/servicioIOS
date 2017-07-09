@@ -11,9 +11,8 @@ use \FOS\RestBundle\Controller\FOSRestController;
 use \Symfony\Component\HttpFoundation\Request;
 use \Symfony\Component\HttpFoundation\Response;
 
-use \WebserviceBundle\Entity\Tag;
-use \WebserviceBundle\Entity\Usuario;
-use \WebserviceBundle\Entity\Oferta;
+use WebserviceBundle\Entity\Tag;
+use WebserviceBundle\Entity\Oferta;
 
 class TagController extends FOSRestController
 {
@@ -62,7 +61,7 @@ class TagController extends FOSRestController
         }
 
         $tag = new Tag();
-        $tag.setDescripcion($descripcion);
+        $tag->setDescripcion($descripcion);
         $oferta_old->getTags()->add($tag);
         $this->getDoctrine()->getEntityManager()->persist($tag);
         $this->getDoctrine()->getEntityManager()->flush();

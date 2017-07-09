@@ -30,3 +30,7 @@ oferta:
 tag:
     type: rest
     resource: WebserviceBundle\Controller\TagController
+
+captura:
+    type: rest
+    resource: WebserviceBundle\Controller\CapturaController
