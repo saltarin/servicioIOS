@@ -26,6 +26,7 @@ class CategoriaController extends FOSRestController
             ->getRepository('WebserviceBundle:Categoria')
             ->findAll();
         if($categorias === null){
+            
             return new View("Sin resultados", Response::HTTP_NOT_FOUND);
         }
         
