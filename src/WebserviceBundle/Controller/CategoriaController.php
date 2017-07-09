@@ -29,7 +29,7 @@ class CategoriaController extends FOSRestController
             return new View("Sin resultados", Response::HTTP_NOT_FOUND);
         }
         
-        return array('categorias' => $categorias);
+        return array('categorias' => $categorias, 'code' => Response::HTTP_OK);
     }
 
 
@@ -46,7 +46,7 @@ class CategoriaController extends FOSRestController
             return array('error' => "Categoria not exists", 'code' => Response::HTTP_NOT_FOUND);
         }
         
-        return array('categoria' => $categoria);
+        return array('categoria' => $categoria, 'code' => Response::HTTP_OK);
     }
 
     /**

@@ -46,7 +46,8 @@ class PuntuacionController extends FOSRestController
             
             $puntuacion_old->setPuntuacion(1);
             $this->getDoctrine()->getEntityManager()->flush();
-            return array('puntuacionOferta' => $puntuacion_old, 'code' => Response::HTTP_OK);
+
+            return array('puntuacionOferta' => $puntuacion_old,'total' => $this->total($oferta), 'code' => Response::HTTP_OK);
         }
 
         $puntuacion = new PuntuacionOferta();
@@ -57,7 +58,7 @@ class PuntuacionController extends FOSRestController
         $this->getDoctrine()->getEntityManager()->persist($puntuacion);
         $this->getDoctrine()->getEntityManager()->flush();
 
-        return array('puntuacionOferta' => $puntuacion, 'code' => Response::HTTP_OK);
+        return array('puntuacionOferta' => $puntuacion,'total'=>$this->total($oferta), 'code' => Response::HTTP_OK);
     }
 
      /**
@@ -89,7 +90,9 @@ class PuntuacionController extends FOSRestController
 
             $puntuacion_old->setPuntuacion(-1);
             $this->getDoctrine()->getEntityManager()->flush();
-            return array('puntuacionOferta' => $puntuacion_old, 'code' => Response::HTTP_OK);
+            
+
+            return array('puntuacionOferta' => $puntuacion_old,'total' => $this->total($oferta), 'code' => Response::HTTP_OK);
         }
 
         $puntuacion = new PuntuacionOferta();
@@ -100,6 +103,28 @@ class PuntuacionController extends FOSRestController
         $this->getDoctrine()->getEntityManager()->persist($puntuacion);
         $this->getDoctrine()->getEntityManager()->flush();
 
-        return array('puntuacionOferta' => $puntuacion, 'code' => Response::HTTP_OK);
+        return array('puntuacionOferta' => $puntuacion, 'total' => $this->total($oferta), 'code' => Response::HTTP_OK);
+    }
+
+
+    //-------------------------------------------------------------------------------------------
+
+    /**
+     * @param Oferta $oferta
+     * @return Int
+     */
+    public function total($oferta){
+
+        $puntuaciones = $this->getDoctrine()
+                        ->getRepository('WebserviceBundle:PuntuacionOferta')
+                        ->findBy(array('oferta' => $oferta));
+        
+        $sum = 0;
+        foreach($puntuaciones as $punt){
+
+            $sum = $punt->getPuntuacion() + $sum;
+        }
+        
+        return $sum;
     }
 }
