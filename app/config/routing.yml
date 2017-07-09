@@ -27,3 +27,6 @@ oferta:
     type: rest
     resource: WebserviceBundle\Controller\OfertaController
 
+tag:
+    type: rest
+    resource: WebserviceBundle\Controller\TagController

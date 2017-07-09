@@ -75,7 +75,7 @@ class TagController extends FOSRestController
      * @return array
      * @Rest\View()
      */
-    public function getCategoriasAction(){
+    public function getTagsAction(){
         
         $tags = $this->getDoctrine()
             ->getRepository('WebserviceBundle:Tag')
