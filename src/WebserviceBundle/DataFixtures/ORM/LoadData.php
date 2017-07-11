@@ -12,6 +12,7 @@ use WebserviceBundle\Entity\Categoria;
 use WebserviceBundle\Entity\Usuario;
 use WebserviceBundle\Entity\PuntuacionOferta;
 use WebserviceBundle\Entity\Comentario;
+use WebserviceBundle\Entity\Captura;
 
 class LoadData implements FixtureInterface{
 
@@ -47,6 +48,8 @@ class LoadData implements FixtureInterface{
 
         $tag2 = new Tag();
         $tag2->setDescripcion("Facebook");
+
+        
         
         $oferta1 = new Oferta();
         $oferta1->setTitulo("Oferta 1");
@@ -54,12 +57,19 @@ class LoadData implements FixtureInterface{
         $oferta1->setPrecio(100.25);
         $oferta1->setTipoOferta("Ocasion");
         $oferta1->setFechaCreacion(new \DateTime());
+        $oferta1->setPosX(-12.1222799);
+        $oferta1->setPosY(-77.0283169);
+
         $oferta1->setEstado(1);
         $oferta1->setCategoria($restaurantes);
         $oferta1->setUsuario($usuario);
 
         $oferta1->getTags()->add($tag1);
         $oferta1->getTags()->add($tag2);
+
+        $captura1 = new Captura();
+        $captura1->setUrl("slxtltuko23mvqut6kvs");
+        $captura1->setOferta($oferta1);
 
         $puntuacion1 = new PuntuacionOferta();
         $puntuacion1->setOferta($oferta1);
@@ -89,6 +99,7 @@ class LoadData implements FixtureInterface{
         $manager->persist($restaurantes);
         $manager->persist($usuario);
         $manager->persist($oferta1);
+        $manager->persist($captura1);
         $manager->persist($comentario_001);
         $manager->persist($comentario_001_001);
         $manager->persist($puntuacion1);
