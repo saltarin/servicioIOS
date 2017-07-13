@@ -41,5 +41,47 @@ class ComentarioController extends FOSRestController
         return array('comentarios' => $comentarios, 'code' => Response::HTTP_OK);
     }
 
+    /**
+     * @param Request $request
+     * @return \array
+     * @Rest\Post()
+     */
+    public function postComentariosAction(Request $request){
+
+        $oferta_id = $request->get('oferta');
+        $mensaje = $request->get('mensaje');
+        $usuario_id = $request->get('usuario');
+
+        $oferta_old = $this->getDoctrine()
+                        ->getRepository('WebserviceBundle:Oferta')
+                        ->find($oferta_id);
+
+        if($oferta_old == null){
+
+            return array('code' => Response::HTTP_NOT_FOUND , 'response' => 'not found oferta');
+        }
+
+        $usuario_old = $this->getDoctrine()
+                        ->getRepository('WebserviceBundle:Usuario')
+                        ->find($usuario_id);
+        
+        if($usuario_old == null){
+
+            return array('code' => Response::HTTP_NOT_FOUND , 'response' => 'not found usuario');
+        }
+        
+        $comentario = new Comentario();
+        $comentario->setUsuario($usuario_old);
+        $comentario->setMensaje($mensaje);
+        $comentario->setOferta($oferta_old);
+        $comentario->setFechaRegistro(new \Datetime());
+        $comentario->setEstado(1);
+
+        $this->getDoctrine()->getEntityManager()->persist($comentario);
+        $this->getDoctrine()->getEntityManager()->flush();
+
+        return array('comentario' => $comentario, 'code' => Response::HTTP_OK);
+    }
+
     
 }
